@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import * as commentService from './comment.service.js';
+import { successResponse } from '../../Common/Utils/Response/success.response.js';
+const router = Router();
+router.post('/createBulk', commentService.createCommentBulk);
+router.patch('/update{/:id}', commentService.updateComment);
+router.get('/getNewestComments', commentService.getNewestComments);
+router.get('/getSpecificComment{/:id}', commentService.getSpecificCommentWithUserAndPost);
+router.post('/findOrCreate', commentService.findOrCreateComment);
+export default router;
