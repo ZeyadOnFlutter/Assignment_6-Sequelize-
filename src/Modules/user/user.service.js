@@ -109,7 +109,9 @@ export const signUp = async (req, res) => {
       });
     }
     if (!Object.values(roleEnum).includes(role)) {
-      throw new Error('Role must be either user or admin', { cause: { status: 400 } });
+      throw new Error(`Role must be either ${Object.values(roleEnum).join(', ')}`, {
+        cause: { status: 400 },
+      });
     }
     const user = UserModel.build({
       name,
