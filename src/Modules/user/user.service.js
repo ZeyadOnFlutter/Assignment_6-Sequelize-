@@ -113,6 +113,8 @@ export const signUp = async (req, res) => {
         cause: { status: 400 },
       });
     }
+    const existedUser = await UserModel.findOne({ where: email });
+    if (existedUser) throw new Error('Email Already Exists', { cause: { status: 409 } });
     const user = UserModel.build({
       name,
       email,
